@@ -1,0 +1,38 @@
+@import "reset.css";
+
+header {
+    display: flex;
+}
+
+main {
+    display: flex;
+    height: 900px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+}
+
+.clock {
+    font-size: 10.5rem;
+    font-weight: bold;
+}
+
+.greeting {
+    margin-top: 20px;
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+.toDoList {
+    margin-top: 50px;
+    font-weight: bold;
+}
