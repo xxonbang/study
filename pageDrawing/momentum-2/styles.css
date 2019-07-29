@@ -22,7 +22,7 @@ main {
 }
 
 .clock {
-    font-size: 10.5rem;
+    font-size: 9.5rem;
     font-weight: bold;
 }
 
@@ -35,4 +35,12 @@ main {
 .toDoList {
     margin-top: 50px;
     font-weight: bold;
+}
+
+.inputForm {
+    display: none;
+}
+
+.showing {
+    display: block;
 }
