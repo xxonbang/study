@@ -1,6 +1,6 @@
 const greeting = document.getElementById("greeting");
-const inputForm = document.getElementById("inputForm");
-const input = document.querySelector("input");
+const nameForm = document.getElementById("nameForm");
+const input = nameForm.querySelector("input");
 
 const CURRENT_USER = "currentUser";
 
@@ -14,7 +14,7 @@ function checkUser() {
 }
 
 function askName() {
-    inputForm.classList.add("showing");
+    nameForm.classList.add("showing");
 }
 
 function doGreeting() {
@@ -28,12 +28,12 @@ function saveName(event) {
     localStorage.setItem(CURRENT_USER, userName);
     input.value = '';
     doGreeting();
-    inputForm.classList.remove("showing");
+    nameForm.classList.remove("showing");
 }
 
 function init() {
     checkUser();
-    inputForm.addEventListener("submit", saveName);
+    nameForm.addEventListener("submit", saveName);
 }
 
 init();

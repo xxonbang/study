@@ -4,12 +4,30 @@ header {
     display: flex;
 }
 
+body {
+    background-color: #778beb;
+    color: white;
+}
+
 main {
     display: flex;
     height: 900px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+input {
+    margin: 10px 0px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .weather {
@@ -32,15 +50,55 @@ main {
     font-weight: bold;
 }
 
-.toDoList {
-    margin-top: 50px;
+.toDoForm {
+    margin-top: 20px;
     font-weight: bold;
 }
 
-.inputForm {
+.nameForm {
+    margin-top: 30px;
     display: none;
 }
 
 .showing {
-    display: block;
+    display: block !important;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.bgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    animation: fadeIn .5s linear;
+}
+
+.toDoList {
+    /* display: none; */
+    width: 20%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.toDoList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 0px;
+  }
