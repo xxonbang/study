@@ -50,7 +50,6 @@ function paintToDo(text) {
 function checkTodoList() {
     const loadedToDos = localStorage.getItem(TODOLIST_LS);
     if (loadedToDos !== null) {
-        // toDoList.classList.add("showing");
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(todo => {
             paintToDo(todo.text);

@@ -19,15 +19,19 @@ main {
 
 
 input {
-    margin: 10px 0px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid white;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0);
+    width: 480px;
+    height: 50px;
+    font-size: 40px;
     color: white;
-    font-size: 20px;
-    font-weight: 600;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid white;
+}
+
+input:focus {
+    outline: none;
+    cursor: text;
 }
 
 .weather {
@@ -44,24 +48,27 @@ input {
     font-weight: bold;
 }
 
-.greeting {
-    margin-top: 20px;
-    font-size: 4.5rem;
-    font-weight: bold;
-}
-
+.nameForm,
+.greeting,
 .toDoForm {
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.nameForm {
-    margin-top: 30px;
     display: none;
 }
 
 .showing {
-    display: block !important;
+    color: white;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s linear;
 }
 
 @keyframes fadeIn {
@@ -84,21 +91,21 @@ input {
     animation: fadeIn .5s linear;
 }
 
-.toDoList {
-    /* display: none; */
-    width: 20%;
-    background-color: black;
-    background-color: rgba(0, 0, 0, 0.4);
+li {
+    list-style: none;
     padding: 10px 20px;
-    border-radius: 5px;
-}
-
-.toDoList li {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    animation: fadeIn 0.5s linear;
+}
+
+.toDoList {
+    width: 30%;
+    margin: 0 auto;
+    padding: 0px;
     color: white;
     font-size: 20px;
-    font-weight: 600;
-    padding: 5px 0px;
-  }
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
