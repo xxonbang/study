@@ -5,50 +5,38 @@ import Movie from './Movie'
 
 class App extends Component {
 
-  state = {
-
-  }
+  state = { }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        movies: [
-          {
-            title: "end game",
-            poster: "https://images-na.ssl-images-amazon.com/images/I/81mIV6aiWUL._SL1500_.jpg"
-          },
-          {
-            title: "old boy",
-            poster: "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Oldboykoreanposter.jpg/220px-Oldboykoreanposter.jpg"
-          },
-          {
-            title: "iron man",
-            poster: "https://upload.wikimedia.org/wikipedia/en/7/70/Ironmanposter.JPG"
-          },
-          {
-            title: "captin amercia",
-            poster: "https://images-na.ssl-images-amazon.com/images/I/81slGaisBhL._SL1500_.jpg"
-          },
-          {
-            title: "transformer",
-            poster: "https://cdn.vox-cdn.com/thumbor/UPo4ENZ-p48hzifL8kTLcUhD3B8=/0x0:2662x1369/920x613/filters:focal(982x579:1406x1003):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/58721161/optimus.0.jpg"
-          }
-        ]
-      })
-    }, 3000)
+    this._getMovies();
   }  
 
   _renderMovies = () => {
-    const movies = this.state.movies.map((movie, index) => {
-      return <Movie title={movie.title} poster={movie.poster} key={index} />
+    const movies = this.state.movies.map((movie) => {
+      return <Movie title={movie.title_english} poster={movie.medium_cover_image} key={movie.id} genres={movie.genres} synopsis={movie.synopsis} />
     })
     return movies
   }
 
+  _getMovies = async () => {
+    const movies = await this._callApi();
+    this.setState({
+      movies
+    })
+  }
+
+  _callApi = () => {
+    return fetch('https://yts.lt/api/v2/list_movies.json?sort_by=download_count')
+    .then(response => response.json())
+    .then(json => json.data.movies)
+    .catch(err => console.log(err))
+  }
+
   render() {
+    const { movies } = this.state;
     return (
-      <div className="App">
-        {this.state.movies ? this._renderMovies() : 'Loading'}
+      <div className={movies ? "App" : "App__loading"}>
+        {movies ? this._renderMovies() : 'Loading'}
       </div>
     );
   }
