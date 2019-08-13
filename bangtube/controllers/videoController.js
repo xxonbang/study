@@ -1,7 +1,15 @@
-import { videos } from "../db"
 import routes from "../routes";
+import Video from "../models/Video";
 
-export const home = (req, res) => res.render("home", { pageTitle: "Home", videos });
+export const home = async (req, res) => {
+    try {
+        const videos = await Video.find({});
+        res.render("home", { pageTitle: "Home", videos });
+    } catch (error) {
+        console.log(error);
+        res.render("home", { pageTitle: "Home", videos });
+    }
+};
 
 export const search = (req, res) => {
     // const searchingBy = req.query.term; 과 아랫줄은 같은 내용, 아랫줄은 최신 ecma6 문법임
@@ -11,12 +19,18 @@ export const search = (req, res) => {
 
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
     const {
-        body: { file, title, description }
+        body: { title, description },
+        file: { path }
     } = req;
-    // To Do: Upload and Save video
-    res.redirect(routes.videoDetail(324393));
+    const newVideo = await Video.create({
+        fileUrl: path,
+        title: title,
+        description: description
+    });
+    console.log(newVideo);
+    res.redirect(routes.videoDetail(newVideo.id));    
 };
 
 
