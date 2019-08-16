@@ -11,11 +11,17 @@ export const home = async (req, res) => {
   }
 };
 
-export const search = (req, res) => {
+export const search = async (req, res) => {
   // const searchingBy = req.query.term; 과 아랫줄은 같은 내용, 아랫줄은 최신 ecma6 문법임
   const {
     query: { term: searchingBy }
   } = req;
+  let videos = [];
+  try {
+    videos = await Video.find({ title: {$regex: searchingBy, $options: "i" } });
+  } catch (error) {
+    console.log(error);
+  }
   res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
 
@@ -79,7 +85,7 @@ export const deleteVideo = async (req, res) => {
   try {
     await Video.findByIdAndRemove({ _id: id });
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
   res.redirect(routes.home);
 };
