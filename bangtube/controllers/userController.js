@@ -61,7 +61,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
 };
 
 export const postGithubLogIn = (req, res) => {
-  res.redirect(routes.home);  
+  res.redirect(routes.home);
 };
 
 export const facebookLogin = passport.authenticate("facebook");

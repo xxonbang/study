@@ -32,7 +32,7 @@ globalRouter.post(routes.login, onlyPublic, postLogin);
 globalRouter.get(routes.logout, onlyPrivate, logout);
 
 globalRouter.get(routes.github, githubLogin);
-globalRouter.get(
+globalRouter.post(
   routes.githubCallback,
   passport.authenticate(
     "github",
@@ -44,7 +44,7 @@ globalRouter.get(
 globalRouter.get(routes.me, getMe);
 
 globalRouter.get(routes.facebook, facebookLogin);
-globalRouter.get(
+globalRouter.post(
   routes.facebookCallback,
   passport.authenticate(
     "facebook",
