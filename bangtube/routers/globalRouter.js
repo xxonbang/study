@@ -32,25 +32,19 @@ globalRouter.post(routes.login, onlyPublic, postLogin);
 globalRouter.get(routes.logout, onlyPrivate, logout);
 
 globalRouter.get(routes.github, githubLogin);
-globalRouter.post(
+globalRouter.get(
   routes.githubCallback,
-  passport.authenticate(
-    "github",
-    { failureRedirect: "/login" },
-    postGithubLogIn
-  )
+  passport.authenticate("github", { failureRedirect: "/login" }),
+  postGithubLogIn
 );
 
 globalRouter.get(routes.me, getMe);
 
 globalRouter.get(routes.facebook, facebookLogin);
-globalRouter.post(
+globalRouter.get(
   routes.facebookCallback,
-  passport.authenticate(
-    "facebook",
-    { failureRedirect: "/login" },
-    postFacebookLogin
-  )
+  passport.authenticate("facebook", { failureRedirect: "/login" }),
+  postFacebookLogin
 );
 
 export default globalRouter;
